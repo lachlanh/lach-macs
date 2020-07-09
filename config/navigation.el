@@ -49,7 +49,8 @@
 (projectile-mode +1)
 
 (global-set-key [f6] 'neotree-toggle)
-
+;; reload neotree on projectile project change
+(setq projectile-switch-project-action 'neotree-projectile-action)
 ;; bind ace window
 (global-set-key (kbd "M-o") 'ace-window)
 

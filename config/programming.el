@@ -19,6 +19,9 @@
 (setq company-idle-delay 0.1)
 (global-company-mode 1)
 
+(setq-default
+ whitespace-line-column 80
+ whitespace-style       '(face lines-tail))
 
 (add-hook 'prog-mode-hook 'paredit-mode)
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)

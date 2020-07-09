@@ -14,11 +14,14 @@
 
 (load-packages go-packages)
 
+
+
+
 (defun my-go-mode-hook ()
   ;; paredit gets in the way
   (message "inside my-go-mode-hook")
   (disable-paredit-mode)
-  (setq tab-width 2 indent-tabs-mode 1)
+  (setq tab-width 8 indent-tabs-mode 1)
   (add-hook 'before-save-hook 'gofmt-before-save)
   (setq gofmt-command "goimports")
   (local-set-key (kbd "M-.") 'godef-jump)
@@ -27,6 +30,8 @@
 
   (require 'smartparens-config)
   (smartparens-mode)
+  ;;marks anything over col 80
+  (whitespace-mode)
   
   )
 

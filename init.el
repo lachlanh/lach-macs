@@ -10,7 +10,7 @@
 (load "editing")
 (load "org-local")
 (load "programming")
-;;(load "go")
+(load "go")
 (load "clojure")
 
 ;; (add-to-list 'load-path "~/.emacs.d/better-defaults")
