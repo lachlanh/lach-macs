@@ -1,0 +1,65 @@
+;; go related config
+(defvar go-packages
+  '(
+    go-mode
+    lsp-mode
+    lsp-ui
+    company-lsp
+
+    smartparens
+    flycheck-golangci-lint
+    ))
+
+(load-packages go-packages)
+
+(defun my-go-mode-hook ()
+  ;; paredit gets in the way
+  (disable-paredit-mode)
+  (setq tab-width 8 indent-tabs-mode 1)
+
+  (local-set-key (kbd "M-p") 'compile)
+  (local-set-key (kbd "M-P") 'recompile)
+  
+  (smartparens-mode)
+
+  ;;marks anything over col 80
+  (whitespace-mode)
+  
+  (define-key smartparens-mode-map (kbd "C-<right>") 'sp-forward-slurp-sexp)
+  (define-key smartparens-mode-map (kbd "C-<left>") 'sp-forward-barf-sexp)
+  )
+
+(setq lsp-prefer-flymake nil)
+
+(add-hook 'go-mode-hook 'my-go-mode-hook)
+
+(add-hook 'go-mode-hook 'lsp)
+;;(add-hook 'go-mode-hook 'lsp-deferred)
+;;(add-hook 'go-mode-hook 'lsp-ui-mode)
+;;(add-hook 'go-mode-hook 'company-lsp)
+
+(defun lsp-go-install-save-hooks ()
+  (add-hook 'before-save-hook #'lsp-format-buffer t t)
+  (add-hook 'before-save-hook #'lsp-organize-imports t t))
+
+(add-hook 'go-mode-hook 'lsp-go-install-save-hooks)
+
+;; don't show the hovers
+(setq lsp-ui-doc-enable nil)
+(setq lsp-ui-flycheck-enable t)
+
+;; get flycheck working
+;(add-hook 'go-mode-hook 'flycheck-mode)
+
+                                        ;(add-hook 'go-mode-hook 'go-eldoc-setup)
+       
+                                        (add-hook 'go-mode-hook 'flycheck-golangci-lint-setup)
+
+
+;; set the path
+;; add the company backends
+;; (add-hook 'go-mode-hook (lambda ()
+;;                           (company-mode)
+;;                           (set (make-local-variable 'company-backends) '(company-go))))
+
+

@@ -63,4 +63,18 @@
 
 (popwin-mode 1)
 
+;; this makes neotree act weird
+;;(setq display-buffer-function 'popwin:display-buffer)
+
+(setq popwin:special-display-config
+      '(("*Help*"  :height 30)
+;;        ("*Completions*" :noselect t)
+        ("*Messages*" :noselect t :height 30)
+        ("*Go Test*" :noselect t :width 70 :position right)
+        ("*compilation*" :noselect t :width 70 :position right)
+        ("magit." :regexp t :dedicated t :width 70 :position right)
+        ("magit-diff." :regexp t :stick t :width 70 :position right)
+        ("COMMIT_EDITMSG." :regexp t :stick t :width 70 :position right)
+        ))
+
 

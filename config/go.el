@@ -9,6 +9,7 @@
     golint
     company-go
     smartparens
+    smartparens-config
     go-guru
     ))
 
@@ -28,7 +29,6 @@
   (local-set-key (kbd "M-p") 'compile)
   (local-set-key (kbd "M-P") 'recompile)
 
-  (require 'smartparens-config)
   (smartparens-mode)
   ;;marks anything over col 80
   (whitespace-mode)
