@@ -9,6 +9,7 @@
     ace-window
     neotree
     popwin
+    iy-go-to-char
     ))
 
 (load-packages nav-packages)
@@ -21,7 +22,8 @@
 (setq ivy-use-virtual-buffers t)
 ;;fuzzy matching
 (setq ivy-re-builders-alist
-      '((t . ivy--regex-fuzzy)))
+      '((swiper . ivy--regex-plus)
+        (t . ivy--regex-fuzzy)))
 (setq enable-recursive-minibuffers t)
 ;;enable this if you want `swiper' to use it
 (setq search-default-mode #'char-fold-to-regexp)
@@ -30,8 +32,9 @@
 (global-set-key (kbd "<f6>") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "M-y") 'counsel-yank-pop)
+(global-set-key (kbd "C-x C-f") 'counsel-fzf)
 ;;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "C-x C-f") 'projectile-find-file)
+;;(global-set-key (kbd "C-x C-f") 'projectile-find-file)
 (global-set-key (kbd "<f1> f") 'counsel-describe-function)
 (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
 (global-set-key (kbd "<f1> l") 'counsel-find-library)
@@ -45,6 +48,8 @@
 (global-set-key (kbd "C-c v") 'ivy-push-view)
 (global-set-key (kbd "C-c V") 'ivy-pop-view)
 
+
+(global-set-key (kbd "M-m") 'iy-go-to-char)
 
 ;; switch off for the moment
 ;; projectile everywhere!

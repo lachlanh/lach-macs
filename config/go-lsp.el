@@ -7,7 +7,8 @@
     company-lsp
 
     smartparens
-    flycheck-golangci-lint
+    ;;flycheck-golangci-lint
+    golint
     ))
 
 (load-packages go-packages)
@@ -25,8 +26,8 @@
   ;;marks anything over col 80
   (whitespace-mode)
   
-  (define-key smartparens-mode-map (kbd "C-<right>") 'sp-forward-slurp-sexp)
-  (define-key smartparens-mode-map (kbd "C-<left>") 'sp-forward-barf-sexp)
+  (define-key smartparens-mode-map (kbd "M-<right>") 'sp-forward-slurp-sexp)
+  (define-key smartparens-mode-map (kbd "M-<left>") 'sp-forward-barf-sexp)
   )
 
 (setq lsp-prefer-flymake nil)
@@ -47,13 +48,22 @@
 ;; don't show the hovers
 (setq lsp-ui-doc-enable nil)
 (setq lsp-ui-flycheck-enable t)
+(setq lsp-gopls-staticcheck t)
+(setq lsp-eldoc-render-all t)
 
 ;; get flycheck working
-;(add-hook 'go-mode-hook 'flycheck-mode)
+
+
+;;(eval-after-load 'flycheck
+;;  '(add-hook 'go-mode-hook #'flycheck-golangci-lint-setup))
+
+
+(add-hook 'go-mode-hook 'flycheck-mode)
 
                                         ;(add-hook 'go-mode-hook 'go-eldoc-setup)
        
-                                        (add-hook 'go-mode-hook 'flycheck-golangci-lint-setup)
+                                        ;(add-hook 'go-mode-hook 'flycheck-golangci-lint-setup)
+
 
 
 ;; set the path
