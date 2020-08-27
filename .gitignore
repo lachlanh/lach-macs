@@ -12,3 +12,4 @@ elpa
 recentf
 transient
 .lsp-session-v1
+.cache/
