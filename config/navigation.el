@@ -12,7 +12,9 @@
     treemacs
     treemacs-projectile
     popwin
-    iy-go-to-char
+    ;;iy-go-to-char
+    avy
+    expand-region
     ))
 
 (load-packages nav-packages)
@@ -52,7 +54,12 @@
 (global-set-key (kbd "C-c V") 'ivy-pop-view)
 
 
-(global-set-key (kbd "M-m") 'iy-go-to-char)
+(global-set-key (kbd "M-c") 'avy-goto-char-2)
+(global-set-key (kbd "M-l") 'avy-goto-line)
+
+;; expand-region
+(global-set-key (kbd "M-e") 'er/expand-region)
+(pending-delete-mode t)
 
 ;; switch off for the moment
 ;; projectile everywhere!

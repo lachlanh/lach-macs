@@ -7,8 +7,8 @@
     company-lsp
 
     smartparens
-    ;;flycheck-golangci-lint
-    golint
+    flycheck-golangci-lint
+    ;;golint
     ))
 
 (load-packages go-packages)
@@ -23,11 +23,17 @@
   
   (smartparens-mode)
 
-  ;;marks anything over col 80
+   ;;marks anything over col 80
   (whitespace-mode)
   
   (define-key smartparens-mode-map (kbd "M-<right>") 'sp-forward-slurp-sexp)
   (define-key smartparens-mode-map (kbd "M-<left>") 'sp-forward-barf-sexp)
+
+  ;; specifically enable go-golint
+  (setq flycheck-checker 'go-golint)
+
+  (setq go-test-verbose 1)
+
   )
 
 (setq lsp-prefer-flymake nil)
@@ -52,24 +58,7 @@
 (setq lsp-eldoc-render-all t)
 
 ;; get flycheck working
-
-
-;;(eval-after-load 'flycheck
-;;  '(add-hook 'go-mode-hook #'flycheck-golangci-lint-setup))
-
-
 (add-hook 'go-mode-hook 'flycheck-mode)
 
-                                        ;(add-hook 'go-mode-hook 'go-eldoc-setup)
-       
-                                        ;(add-hook 'go-mode-hook 'flycheck-golangci-lint-setup)
-
-
-
-;; set the path
-;; add the company backends
-;; (add-hook 'go-mode-hook (lambda ()
-;;                           (company-mode)
-;;                           (set (make-local-variable 'company-backends) '(company-go))))
-
-
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-golangci-lint-setup))
