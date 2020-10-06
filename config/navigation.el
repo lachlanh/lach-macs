@@ -94,8 +94,8 @@
         ("*Go Test*" :noselect t :width 70 :position right)
         ("*compilation*" :noselect t :width 70 :position right)
         ("magit:." :regexp t :dedicated t :width 70 :position right)
-        ("magit-diff:." :regexp t :stick t :width 70 :position left)
-        ("COMMIT_EDITMSG." :regexp t :stick t :height 30 :width 70 :position bottom-and-right)
+;;      ("magit-diff:." :regexp t :stick t :width 70 :position left)
+;;      ("COMMIT_EDITMSG." :regexp t :stick t :height 30 :width 70 :position bottom-and-right)
         ))
 
 

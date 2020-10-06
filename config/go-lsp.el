@@ -9,6 +9,7 @@
     smartparens
     flycheck-golangci-lint
     ;;golint
+    sql-indent
     ))
 
 (load-packages go-packages)
@@ -62,3 +63,6 @@
 
 (eval-after-load 'flycheck
   '(add-hook 'flycheck-mode-hook #'flycheck-golangci-lint-setup))
+
+(add-hook 'go-test-mode-hook
+          (lambda () (visual-line-mode 1)))
