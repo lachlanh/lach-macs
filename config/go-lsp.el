@@ -9,7 +9,7 @@
     smartparens
     flycheck-golangci-lint
     ;;golint
-    sql-indent
+    gotest
     ))
 
 (load-packages go-packages)
