@@ -24,5 +24,5 @@
     (message "load %s" p)
     (when (not (package-installed-p p))
       (package-install p))))
-
+(require 'subr-x)
 (load-packages my-packages)

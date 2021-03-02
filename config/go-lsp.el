@@ -9,7 +9,8 @@
     smartparens
     flycheck-golangci-lint
     ;;golint
-    sql-indent
+    ;;sql-indent
+    gotest
     ))
 
 (load-packages go-packages)
@@ -34,6 +35,7 @@
   (setq flycheck-checker 'go-golint)
 
   (setq go-test-verbose 1)
+  (setq go-test-args "-count=1")
 
   )
 

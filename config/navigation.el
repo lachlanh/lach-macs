@@ -25,9 +25,10 @@
 (require 'ivy)
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
-;;fuzzy matching
+;;fuzzy matching add a command to exclude it from the fuzzy match
 (setq ivy-re-builders-alist
       '((swiper . ivy--regex-plus)
+        (counsel-rg . ivy--regex-plus)
         (t . ivy--regex-fuzzy)))
 (setq enable-recursive-minibuffers t)
 ;;enable this if you want `swiper' to use it

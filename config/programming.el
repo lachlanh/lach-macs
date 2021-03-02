@@ -16,7 +16,8 @@
 
 (load-packages programming-packages)
 
-(setq company-idle-delay 0.1)
+;(setq company-idle-delay 0.1)
+(setq company-idle-delay 0.5)
 (global-company-mode 1)
 
 (setq-default
