@@ -19,6 +19,11 @@
 (add-hook 'clojure-mode-hook #'enable-paredit-mode)
 (add-hook 'clojure-mode-hook #'clj-refactor-mode) ;; TODO LH check this is working
 
+(defun my-clojure-mode-hook ()
+  (add-hook 'before-save-hook #'cider-format-buffer t t))
+
+(add-hook 'clojure-mode-hook 'my-clojure-mode-hook)
+
 (add-hook 'cider-repl-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'cider-repl-mode-hook #'subword-mode)
 (add-hook 'cider-repl-mode-hook #'enable-paredit-mode)
