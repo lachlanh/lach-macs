@@ -11,6 +11,7 @@
     yasnippet-snippets
     ivy-yasnippet
     flycheck
+    clipetty
     ))
 
 
@@ -28,3 +29,6 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (yas-global-mode 1)
+
+;; terminal copy paste
+(global-clipetty-mode)

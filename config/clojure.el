@@ -6,18 +6,20 @@
     cider
     clj-refactor
 
-    ;;flycheck-clj-kondo ;; TODO LH needs a bit of config.. figure it out later.
+    flycheck-clj-kondo ;; TODO LH needs a bit of config.. figure it out later.
     ))
 
 (load-packages clj-packages)
 
 (require 'clojure-mode-extra-font-locking)
 (require 'clj-refactor)
+(require 'flycheck-clj-kondo)
 
 (add-hook 'clojure-mode-hook #'rainbow-delimiters-mode)
 (add-hook 'clojure-mode-hook #'subword-mode)
 (add-hook 'clojure-mode-hook #'enable-paredit-mode)
 (add-hook 'clojure-mode-hook #'clj-refactor-mode) ;; TODO LH check this is working
+(add-hook 'clojure-mode-hook #'flycheck-mode)
 
 (defun my-clojure-mode-hook ()
   (add-hook 'before-save-hook #'cider-format-buffer t t))
