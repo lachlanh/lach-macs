@@ -4,7 +4,7 @@
     go-mode
     lsp-mode
     lsp-ui
-    company-lsp
+;;    company-lsp
 
     smartparens
     flycheck-golangci-lint
