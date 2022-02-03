@@ -22,7 +22,8 @@
 (add-hook 'clojure-mode-hook #'flycheck-mode)
 
 (defun my-clojure-mode-hook ()
-  (add-hook 'before-save-hook #'cider-format-buffer t t))
+  (add-hook 'before-save-hook #'cider-format-buffer t t)
+  (cljr-add-keybindings-with-prefix "C-c C-r"))
 
 (add-hook 'clojure-mode-hook 'my-clojure-mode-hook)
 
