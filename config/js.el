@@ -36,5 +36,10 @@
           (lambda ()
             (when (string-equal "tsx" (file-name-extension buffer-file-name))
               (setup-tide-mode))))
+
+;; smart-parens
+(add-hook 'web-mode-hook #'turn-on-smartparens-mode t)
+(sp-use-paredit-bindings)
+
 ;; enable typescript-tslint checker
 (flycheck-add-mode 'typescript-tslint 'web-mode)
