@@ -12,6 +12,7 @@
     ivy-yasnippet
     flycheck
     clipetty
+    yaml-mode
     ))
 
 
