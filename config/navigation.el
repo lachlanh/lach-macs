@@ -10,11 +10,16 @@
     ace-window
     ;;neotree
     treemacs
-    treemacs-projectile
+    ;;treemacs-projectile
+    treemacs-perspective
     popwin
     ;;iy-go-to-char
     avy
     expand-region
+    
+    ;;perspective frame per project ?
+    perspective
+    persp-projectile
     ))
 
 (load-packages nav-packages)
@@ -82,6 +87,16 @@
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 (smex-initialize)
 ;;(global-set-key (kbd "M-x") 'smex)
+
+;; perspective experiment
+(require 'perspective)
+(persp-mode)
+(require 'persp-projectile)
+(global-set-key (kbd "C-x b") 'persp-switch-to-buffer*)
+;;(define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project)
+
+(require 'treemacs-perspective)
+
 
 (popwin-mode 1)
 
