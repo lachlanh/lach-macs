@@ -21,6 +21,13 @@
 (add-hook 'clojure-mode-hook #'clj-refactor-mode) ;; TODO LH check this is working
 (add-hook 'clojure-mode-hook #'flycheck-mode)
 
+;; clojure lsp
+(add-hook 'clojure-mode-hook 'lsp)
+(add-hook 'clojurescript-mode-hook 'lsp)
+(add-hook 'clojurec-mode-hook 'lsp)
+
+(setq lsp-clojure-custom-server-command '("bash" "-c" "/opt/homebrew/bin/clojure-lsp"))
+
 (defun my-clojure-mode-hook ()
   (add-hook 'before-save-hook #'cider-format-buffer t t)
   (cljr-add-keybindings-with-prefix "C-c C-r"))

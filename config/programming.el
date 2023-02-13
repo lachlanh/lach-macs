@@ -13,6 +13,12 @@
     flycheck
     clipetty
     yaml-mode
+
+    ;; clojure lsp setup
+    ;; https://emacs-lsp.github.io/lsp-mode/tutorials/clojure-guide/
+    lsp-mode
+    lsp-treemacs
+    
     ))
 
 (load-packages programming-packages)
