@@ -4,11 +4,22 @@
     ;;navigation
     ivy
     counsel
+    counsel-projectile
     smex
     flx
     ace-window
-    neotree
+    ;;neotree
+    treemacs
+    ;;treemacs-projectile
+    treemacs-perspective
     popwin
+    ;;iy-go-to-char
+    avy
+    expand-region
+    
+    ;;perspective frame per project ?
+    perspective
+    persp-projectile
     ))
 
 (load-packages nav-packages)
@@ -19,9 +30,11 @@
 (require 'ivy)
 (ivy-mode 1)
 (setq ivy-use-virtual-buffers t)
-;;fuzzy matching
+;;fuzzy matching add a command to exclude it from the fuzzy match
 (setq ivy-re-builders-alist
-      '((t . ivy--regex-fuzzy)))
+      '((swiper . ivy--regex-plus)
+        (counsel-rg . ivy--regex-plus)
+        (t . ivy--regex-fuzzy)))
 (setq enable-recursive-minibuffers t)
 ;;enable this if you want `swiper' to use it
 (setq search-default-mode #'char-fold-to-regexp)
@@ -30,8 +43,9 @@
 (global-set-key (kbd "<f6>") 'ivy-resume)
 (global-set-key (kbd "M-x") 'counsel-M-x)
 (global-set-key (kbd "M-y") 'counsel-yank-pop)
+(global-set-key (kbd "C-x C-f") 'counsel-projectile-find-file)
 ;;(global-set-key (kbd "C-x C-f") 'counsel-find-file)
-(global-set-key (kbd "C-x C-f") 'projectile-find-file)
+;;(global-set-key (kbd "C-x C-f") 'projectile-find-file)
 (global-set-key (kbd "<f1> f") 'counsel-describe-function)
 (global-set-key (kbd "<f1> v") 'counsel-describe-variable)
 (global-set-key (kbd "<f1> l") 'counsel-find-library)
@@ -46,6 +60,13 @@
 (global-set-key (kbd "C-c V") 'ivy-pop-view)
 
 
+(global-set-key (kbd "M-c") 'avy-goto-char-2)
+(global-set-key (kbd "M-l") 'avy-goto-line)
+
+;; expand-region
+(global-set-key (kbd "M-e") 'er/expand-region)
+(pending-delete-mode t)
+
 ;; switch off for the moment
 ;; projectile everywhere!
 ;; (projectile-global-mode)
@@ -53,9 +74,10 @@
 (define-key projectile-mode-map (kbd "C-c p") 'projectile-command-map)
 (projectile-mode +1)
 
-(global-set-key [f6] 'neotree-toggle)
+;; (global-set-key [f6] 'dired-jump)
+(global-set-key [f6] 'treemacs)
 ;; reload neotree on projectile project change
-(setq projectile-switch-project-action 'neotree-projectile-action)
+;;(setq projectile-switch-project-action 'neotree-projectile-action)
 ;; bind ace window
 (global-set-key (kbd "M-o") 'ace-window)
 
@@ -65,6 +87,16 @@
 (setq smex-save-file (concat user-emacs-directory ".smex-items"))
 (smex-initialize)
 ;;(global-set-key (kbd "M-x") 'smex)
+
+;; perspective experiment
+(require 'perspective)
+(persp-mode)
+(require 'persp-projectile)
+(global-set-key (kbd "C-x b") 'persp-switch-to-buffer*)
+;;(define-key projectile-mode-map (kbd "s-s") 'projectile-persp-switch-project)
+
+(require 'treemacs-perspective)
+
 
 (popwin-mode 1)
 
@@ -78,8 +110,12 @@
         ("*Go Test*" :noselect t :width 70 :position right)
         ("*compilation*" :noselect t :width 70 :position right)
         ("magit:." :regexp t :dedicated t :width 70 :position right)
-        ("magit-diff:." :regexp t :stick t :width 70 :position left)
-        ("COMMIT_EDITMSG." :regexp t :stick t :height 30 :width 70 :position bottom-and-right)
+        ("*cider-error*" :noselect t :width 70 :position right)
+        ("*cider-test-report*" :noselect t :width 70 :position right)
+        ;;("*cider-repl." :regexp t :stick t :width 70 :position right)
+        ("*cider-xref*" :width 70 :position right)
+;;      ("magit-diff:." :regexp t :stick t :width 70 :position left)
+;;      ("COMMIT_EDITMSG." :regexp t :stick t :height 30 :width 70 :position bottom-and-right)
         ))
 
 

@@ -11,12 +11,14 @@
     yasnippet-snippets
     ivy-yasnippet
     flycheck
+    clipetty
+    yaml-mode
     ))
-
 
 (load-packages programming-packages)
 
-(setq company-idle-delay 0.1)
+;(setq company-idle-delay 0.1)
+(setq company-idle-delay 0.5)
 (global-company-mode 1)
 
 (setq-default
@@ -27,3 +29,6 @@
 (add-hook 'prog-mode-hook 'rainbow-delimiters-mode)
 
 (yas-global-mode 1)
+
+;; terminal copy paste
+(global-clipetty-mode)

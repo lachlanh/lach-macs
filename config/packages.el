@@ -17,6 +17,7 @@
     ;;general
     magit
     projectile
+    exec-path-from-shell
     ))
 
 (defun load-packages (pkgs)
@@ -24,5 +25,9 @@
     (message "load %s" p)
     (when (not (package-installed-p p))
       (package-install p))))
-
+(require 'subr-x)
 (load-packages my-packages)
+
+;; init exec path
+(when (daemonp)
+  (exec-path-from-shell-initialize))

@@ -4,10 +4,13 @@
     go-mode
     lsp-mode
     lsp-ui
-    company-lsp
+;;    company-lsp
 
     smartparens
     flycheck-golangci-lint
+    ;;golint
+    ;;sql-indent
+    gotest
     ))
 
 (load-packages go-packages)
@@ -22,11 +25,18 @@
   
   (smartparens-mode)
 
-  ;;marks anything over col 80
+   ;;marks anything over col 80
   (whitespace-mode)
   
-  (define-key smartparens-mode-map (kbd "C-<right>") 'sp-forward-slurp-sexp)
-  (define-key smartparens-mode-map (kbd "C-<left>") 'sp-forward-barf-sexp)
+  (define-key smartparens-mode-map (kbd "M-<right>") 'sp-forward-slurp-sexp)
+  (define-key smartparens-mode-map (kbd "M-<left>") 'sp-forward-barf-sexp)
+
+  ;; specifically enable go-golint
+  (setq flycheck-checker 'go-golint)
+
+  (setq go-test-verbose 1)
+  (setq go-test-args "-count=1")
+
   )
 
 (setq lsp-prefer-flymake nil)
@@ -47,19 +57,14 @@
 ;; don't show the hovers
 (setq lsp-ui-doc-enable nil)
 (setq lsp-ui-flycheck-enable t)
+(setq lsp-gopls-staticcheck t)
+(setq lsp-eldoc-render-all t)
 
 ;; get flycheck working
-;(add-hook 'go-mode-hook 'flycheck-mode)
+(add-hook 'go-mode-hook 'flycheck-mode)
 
-                                        ;(add-hook 'go-mode-hook 'go-eldoc-setup)
-       
-                                        (add-hook 'go-mode-hook 'flycheck-golangci-lint-setup)
+(eval-after-load 'flycheck
+  '(add-hook 'flycheck-mode-hook #'flycheck-golangci-lint-setup))
 
-
-;; set the path
-;; add the company backends
-;; (add-hook 'go-mode-hook (lambda ()
-;;                           (company-mode)
-;;                           (set (make-local-variable 'company-backends) '(company-go))))
-
-
+(add-hook 'go-test-mode-hook
+          (lambda () (visual-line-mode 1)))

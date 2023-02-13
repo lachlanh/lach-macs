@@ -48,6 +48,25 @@ With negative N, comment out original line and use the absolute value."
         (forward-line 1)
         (forward-char pos)))))
 
+;; http://xahlee.info/emacs/emacs/elisp_escape_quotes.html
+;; useful for quoting inside a big json string etc.
+(defun xah-escape-quotes (@begin @end)
+  "Replace 「\"」 by 「\\\"」 in current line or text selection.
+See also: `xah-unescape-quotes'
+
+URL `http://xahlee.info/emacs/emacs/elisp_escape_quotes.html'
+Version 2017-01-11"
+  (interactive
+   (if (use-region-p)
+       (list (region-beginning) (region-end))
+     (list (line-beginning-position) (line-end-position))))
+  (save-excursion
+      (save-restriction
+        (narrow-to-region @begin @end)
+        (goto-char (point-min))
+        (while (search-forward "\"" nil t)
+          (replace-match "\\\"" "FIXEDCASE" "LITERAL")))))
+
 (global-set-key [?\C-c ?d] 'duplicate-line-or-region)
 
 (define-key global-map (kbd "RET") 'newline-and-indent)

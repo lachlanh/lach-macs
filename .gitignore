@@ -11,3 +11,8 @@ backups
 elpa
 recentf
 transient
+.lsp-session-v1
+.cache/
+
+.mc-lists.el
+eln-cache/

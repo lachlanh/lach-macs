@@ -3,6 +3,10 @@
 ;; Turn off the toolbar
 (tool-bar-mode -1)
 
+;; Changes all yes/no questions to y/n type
+(fset 'yes-or-no-p 'y-or-n-p)
+
+
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
