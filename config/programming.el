@@ -15,7 +15,6 @@
     yaml-mode
     ))
 
-
 (load-packages programming-packages)
 
 ;(setq company-idle-delay 0.1)
