@@ -12,7 +12,12 @@
     treemacs
     ;;treemacs-projectile
     treemacs-perspective
-    popwin
+    ;;popwin
+    ;; alternative to popwin called popper
+    ;; https://github.com/karthink/popper
+    popper
+    shackle
+    
     ;;iy-go-to-char
     avy
     expand-region
@@ -23,8 +28,6 @@
     ))
 
 (load-packages nav-packages)
-
-
 
 ;; ivy config
 (require 'ivy)
@@ -98,24 +101,56 @@
 (require 'treemacs-perspective)
 
 
-(popwin-mode 1)
+;; alternative to popwin, popper try it out
+;;(popwin-mode 1)
 
 ;; this makes neotree act weird
 ;;(setq display-buffer-function 'popwin:display-buffer)
 
-(setq popwin:special-display-config
-      '(("*Help*"  :height 30)
-;;        ("*Completions*" :noselect t)
-        ("*Messages*" :noselect t :height 30)
-        ("*Go Test*" :noselect t :width 70 :position right)
-        ("*compilation*" :noselect t :width 70 :position right)
-        ("magit:." :regexp t :dedicated t :width 70 :position right)
-        ("*cider-error*" :noselect t :width 70 :position right)
-        ("*cider-test-report*" :noselect t :width 70 :position right)
-        ;;("*cider-repl." :regexp t :stick t :width 70 :position right)
-        ("*cider-xref*" :width 70 :position right)
-;;      ("magit-diff:." :regexp t :stick t :width 70 :position left)
-;;      ("COMMIT_EDITMSG." :regexp t :stick t :height 30 :width 70 :position bottom-and-right)
-        ))
+;; (setq popwin:special-display-config
+;;       '(("*Help*"  :height 30)
+;; ;;        ("*Completions*" :noselect t)
+;;         ("*Messages*" :noselect t :height 30)
+;;         ("*Go Test*" :noselect t :width 70 :position right)
+;;         ("*compilation*" :noselect t :width 70 :position right)
+;;         ("magit:." :regexp t :dedicated t :width 70 :position right)
+;;         ("*cider-error*" :noselect t :width 70 :position right)
+;;         ("*cider-test-report*" :noselect t :width 70 :position right)
+;;         ;;("*cider-repl." :regexp t :stick t :width 70 :position right)
+;;         ("*cider-xref*" :width 70 :position right)
+;; ;;      ("magit-diff:." :regexp t :stick t :width 70 :position left)
+;; ;;      ("COMMIT_EDITMSG." :regexp t :stick t :height 30 :width 70 :position bottom-and-right)
+;;         ))
 
+(require 'popper)
+(setq popper-reference-buffers
+      '("\\*Messages\\*"
+        "Output\\*$"
+        "\\*Async Shell Command\\*"
+        help-mode
+        compilation-mode
+        "\\*cider."
+	"COMMIT_EDITMSG"
+	))
+(global-set-key (kbd "C-`") 'popper-toggle-latest)  
+(global-set-key (kbd "M-`") 'popper-cycle)
+(global-set-key (kbd "C-M-`") 'popper-toggle-type)
+(popper-mode +1)
 
+;; let shackle handle window placement
+(setq popper-display-control nil)
+
+;; For echo-area hints
+(require 'popper-echo)
+(popper-echo-mode +1)
+
+;; shackle rules
+(setq shackle-rules
+      '(("magit." :regexp t :select t :align right :size 0.4)
+        ("\\*cider." :regexp t :select t :align right :size 0.4))
+      shackle-default-rule
+      '(:select t :align below :size 0.3))
+
+(shackle-mode)
+
+;;(magit-display-buffer-function display-buffer))
