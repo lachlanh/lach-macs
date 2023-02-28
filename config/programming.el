@@ -36,5 +36,8 @@
 
 (yas-global-mode 1)
 
+;; this should mean files auto update from git
+(global-auto-revert-mode t)
+
 ;; terminal copy paste
 (global-clipetty-mode)
