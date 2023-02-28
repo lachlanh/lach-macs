@@ -78,7 +78,8 @@
 (projectile-mode +1)
 
 ;; (global-set-key [f6] 'dired-jump)
-(global-set-key [f6] 'treemacs)
+(global-set-key [f6] 'treemacs-select-window)
+(global-set-key [f7] 'treemacs)
 ;; reload neotree on projectile project change
 ;;(setq projectile-switch-project-action 'neotree-projectile-action)
 ;; bind ace window
@@ -131,6 +132,7 @@
         compilation-mode
         "\\*cider."
 	"COMMIT_EDITMSG"
+        "\\*SQL:."
 	))
 (global-set-key (kbd "C-`") 'popper-toggle-latest)  
 (global-set-key (kbd "M-`") 'popper-cycle)
@@ -147,9 +149,11 @@
 ;; shackle rules
 (setq shackle-rules
       '(("magit." :regexp t :select t :align right :size 0.4)
-        ("\\*cider." :regexp t :select t :align right :size 0.4))
+        ("\\*cider." :regexp t :select t :align right :size 0.4)
+        ("\\*SQL." :regexp t :select f :align right :size 0.4)
+        (treemacs-mode :select t :align right :size 0.3))
       shackle-default-rule
-      '(:select t :align below :size 0.3))
+      '(:select t :align bottom :size 0.3))
 
 (shackle-mode)
 

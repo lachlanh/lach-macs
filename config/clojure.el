@@ -25,6 +25,10 @@
 (add-hook 'clojure-mode-hook 'lsp)
 (add-hook 'clojurescript-mode-hook 'lsp)
 (add-hook 'clojurec-mode-hook 'lsp)
+;; configure the lsp
+;; from https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
+(setq lsp-headerline-breadcrumb-enable nil)
+
 
 (setq lsp-clojure-custom-server-command '("bash" "-c" "/opt/homebrew/bin/clojure-lsp"))
 
