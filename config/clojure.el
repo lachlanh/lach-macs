@@ -28,6 +28,7 @@
 ;; configure the lsp
 ;; from https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
 (setq lsp-headerline-breadcrumb-enable nil)
+(setq lsp-signature-render-documentation nil)
 
 
 (setq lsp-clojure-custom-server-command '("bash" "-c" "/opt/homebrew/bin/clojure-lsp"))
