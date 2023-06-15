@@ -151,6 +151,7 @@
       '(("magit." :regexp t :select t :align right :size 0.4)
         ("\\*cider." :regexp t :select t :align right :size 0.4)
         ("\\*SQL." :regexp t :select f :align right :size 0.4)
+        ("\\*xref\\*" :regexp t :select f :align right :size 0.4)
         (treemacs-mode :select t :align right :size 0.3))
       shackle-default-rule
       '(:select t :align bottom :size 0.3))
