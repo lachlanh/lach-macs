@@ -29,8 +29,14 @@
 ;; from https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
 (setq lsp-headerline-breadcrumb-enable nil)
 
+;;(setq lsp-log-io t)
+;; there were a bunch of problems with on linux with the lsp-workspace-root eval (lsp-workspace-root),
+;; cleaned it up by adding a .projectile file and folder in monorepo
+;; using lsp-workspace-folders-add and lsp-workspace-folders-remove
+;; https://emacs.stackexchange.com/questions/60048/lsp-project-root
 
-(setq lsp-clojure-custom-server-command '("bash" "-c" "/opt/homebrew/bin/clojure-lsp"))
+
+;;(setq lsp-clojure-custom-server-command '("bash" "-c" "/opt/homebrew/bin/clojure-lsp"))
 
 (defun my-clojure-mode-hook ()
   (add-hook 'before-save-hook #'cider-format-buffer t t)
