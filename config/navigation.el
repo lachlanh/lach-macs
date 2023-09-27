@@ -16,7 +16,7 @@
     ;; alternative to popwin called popper
     ;; https://github.com/karthink/popper
     popper
-    shackle
+    ;;shackle
     
     ;;iy-go-to-char
     avy
@@ -131,7 +131,7 @@
         help-mode
         compilation-mode
         "\\*cider."
-	"COMMIT_EDITMSG"
+	;;"COMMIT_EDITMSG"
         "\\*SQL:."
 	))
 (global-set-key (kbd "C-`") 'popper-toggle-latest)  
@@ -147,15 +147,21 @@
 (popper-echo-mode +1)
 
 ;; shackle rules
-(setq shackle-rules
-      '(("magit." :regexp t :select t :align right :size 0.4)
-        ("\\*cider." :regexp t :select t :align right :size 0.4)
-        ("\\*SQL." :regexp t :select f :align right :size 0.4)
-        ("\\*xref\\*" :regexp t :select f :align right :size 0.4)
-        (treemacs-mode :select t :align right :size 0.3))
-      shackle-default-rule
-      '(:select t :align bottom :size 0.3))
+;; (setq shackle-rules
+;;       '(
+;;         ;;("COMMIT_EDITMSG" :regexp t :select t :align bottom :size 0.3)
+;;         ;;("magit-diff.*" :regexp t :select f :align right :size 0.4)
+;;         ;;("magit" :regexp t :select t :align right :size 0.4)
+;;         ;;("magit." :regexp t :select t :align right :size 0.4)
 
-(shackle-mode)
+;;         ("\\*cider." :regexp t :select t :align right :size 0.4)
+;;         ("\\*SQL." :regexp t :select f :align right :size 0.4)
+;;         ("\\*xref\\*" :regexp t :select f :align right :size 0.4)
+;;         (treemacs-mode :select t :align right :size 0.3))
+;;       shackle-default-rule
+;;       '(:select t :align bottom :size 0.3))
+
+;;(shackle-mode)
+
 
 ;;(magit-display-buffer-function display-buffer))
