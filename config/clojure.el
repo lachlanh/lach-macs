@@ -61,3 +61,4 @@
 ;; Wrap when navigating history.
 (setq cider-repl-wrap-history t)
 
+(add-to-list 'auto-mode-alist '("\\.bb\\'" . clojure-mode))
