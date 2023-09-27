@@ -13,6 +13,7 @@
 (load "go-lsp")
 (load "clojure")
 (load "js")
+(load "java")
 
 ;; (add-to-list 'load-path "~/.emacs.d/better-defaults")
 ;; (require 'better-defaults)
@@ -34,6 +35,7 @@
  '(safe-local-variable-values
    '((cider-ns-refresh-after-fn . "integrant.repl/resume")
      (cider-ns-refresh-before-fn . "integrant.repl/suspend"))))
+ '(warning-suppress-types '((comp))))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
