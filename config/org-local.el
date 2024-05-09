@@ -21,7 +21,7 @@
   '(progn
      (add-hook 'org-present-mode-hook
                (lambda ()
-                 (global-linum-mode 0)
+                 (global-display-line-numbers-mode 0)
                  (global-hl-line-mode 0)
                  (org-present-big)
                  (org-display-inline-images)
@@ -29,7 +29,7 @@
                  (org-present-read-only)))
      (add-hook 'org-present-mode-quit-hook
                (lambda ()
-                 (global-linum-mode 1)
+                 (global-display-line-numbers-mode 1)
                  (global-hl-line-mode 1)
                  (org-present-small)
                  (org-remove-inline-images)

@@ -10,7 +10,7 @@
 (when (fboundp 'scroll-bar-mode)
   (scroll-bar-mode -1))
 
-(global-linum-mode)
+(global-display-line-numbers-mode 1)
 
 (setq
  x-select-enable-clipboard t
@@ -35,7 +35,9 @@
 (zenburn-with-color-variables
   (custom-theme-set-faces
    'zenburn
-   `(linum ((t (:foreground ,zenburn-bg+2 :background ,zenburn-bg))))))
+   `(line-number ((t (:inherit default :foreground ,zenburn-bg+2 :background ,zenburn-bg))))
+   ;;`(linum ((t (:foreground ,zenburn-bg+2 :background ,zenburn-bg))))
+   ))
 
 ;;(load-theme 'tsdh-dark t)
 
