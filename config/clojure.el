@@ -29,6 +29,7 @@
 ;; from https://emacs-lsp.github.io/lsp-mode/tutorials/how-to-turn-off/
 (setq lsp-headerline-breadcrumb-enable nil)
 (setq lsp-signature-render-documentation nil)
+(setq lsp-ui-doc-show-with-mouse nil)
 
 ;;(setq lsp-log-io t)
 ;; there were a bunch of problems with on linux with the lsp-workspace-root eval (lsp-workspace-root),
