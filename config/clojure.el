@@ -30,6 +30,11 @@
 (setq lsp-headerline-breadcrumb-enable nil)
 (setq lsp-signature-render-documentation nil)
 (setq lsp-ui-doc-show-with-mouse nil)
+(setq lsp-file-watch-threshold 2000)
+;; TODO LH emacs regexes are mysterious "[/\\\\]\\build\\'"
+;; excluding build directory manually for flutter
+(with-eval-after-load 'lsp-mode
+  (add-to-list 'lsp-file-watch-ignored-directories "/home/lach/src/ocean/darth/build/"))
 
 ;;(setq lsp-log-io t)
 ;; there were a bunch of problems with on linux with the lsp-workspace-root eval (lsp-workspace-root),
