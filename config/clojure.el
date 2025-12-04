@@ -76,3 +76,23 @@
 (setq cider-repl-wrap-history t)
 
 (add-to-list 'auto-mode-alist '("\\.bb\\'" . clojure-mode))
+
+;; From the fancy machine triggers the user/reset namespace reload
+;; good for repl dev, start server in repl C-c r to refresh the namespace
+(defun my/cider-reset ()
+  "Save all buffers and run (user/reset) in the current CIDER REPL."
+  (interactive)
+  ;; 1. Save all modified file buffers without asking for confirmation.
+  ;;    This ensures tools.namespace reads the latest version of your files.
+  (save-some-buffers t)
+  
+  ;; 2. Send the command to the REPL. 
+  ;;    We use user/reset to ensure it works regardless of the current namespace.
+  (cider-interactive-eval "(user/reset)"))
+
+;; Bind C-c r only when CIDER is loaded
+(with-eval-after-load 'cider
+  ;; Bind in code buffers
+  (define-key cider-mode-map (kbd "C-c r") #'my/cider-reset)
+  ;; Bind in the REPL buffer itself
+  (define-key cider-repl-mode-map (kbd "C-c r") #'my/cider-reset))
