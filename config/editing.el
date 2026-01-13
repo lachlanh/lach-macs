@@ -26,27 +26,33 @@
   (keyboard-quit))
 
 ;; duplicate with binding
-(defun duplicate-line-or-region (&optional n)
-  "Duplicate current line, or region if active.
-With argument N, make N copies.
-With negative N, comment out original line and use the absolute value."
-  (interactive "*p")
-  (let ((use-region (use-region-p)))
-    (save-excursion
-      (let ((text (if use-region        ;Get region if active, otherwise line
-                      (buffer-substring (region-beginning) (region-end))
-                    (prog1 (thing-at-point 'line)
-                      (end-of-line)
-                      (if (< 0 (forward-line 1)) ;Go to beginning of next line, or make a new one
-                          (newline))))))
-        (dotimes (i (abs (or n 1)))     ;Insert N times, or once if not specified
-          (insert text))))
-    (if use-region nil                  ;Only if we're working with a line (not a region)
-      (let ((pos (- (point) (line-beginning-position)))) ;Save column
-        (if (> 0 n)                             ;Comment out original with negative arg
-            (comment-region (line-beginning-position) (line-end-position)))
-        (forward-line 1)
-        (forward-char pos)))))
+;; (defun duplicate-line-or-region (&optional n)
+;;   "Duplicate current line, or region if active.
+;; With argument N, make N copies.
+;; With negative N, comment out original line and use the absolute value."
+;;   (interactive "*p")
+;;   (let ((use-region (use-region-p)))
+;;     (save-excursion
+;;       (let ((text (if use-region        ;Get region if active, otherwise line
+;;                       (buffer-substring (region-beginning) (region-end))
+;;                     (prog1 (thing-at-point 'line)
+;;                       (end-of-line)
+;;                       (if (< 0 (forward-line 1)) ;Go to beginning of next line, or make a new one
+;;                           (newline))))))
+;;         (dotimes (i (abs (or n 1)))     ;Insert N times, or once if not specified
+;;           (insert text))))
+;;     (if use-region nil                  ;Only if we're working with a line (not a region)
+;;       (let ((pos (- (point) (line-beginning-position)))) ;Save column
+;;         (if (> 0 n)                             ;Comment out original with negative arg
+;;             (comment-region (line-beginning-position) (line-end-position)))
+;;         (forward-line 1)
+;;         (forward-char pos)))))
+
+;; (global-set-key [?\C-c ?d] 'duplicate-line-or-region)
+
+;; Modern emacs has a built in duplicate function
+(when (>= emacs-major-version 29)
+  (global-set-key (kbd "C-c d") 'duplicate-dwim))
 
 ;; http://xahlee.info/emacs/emacs/elisp_escape_quotes.html
 ;; useful for quoting inside a big json string etc.
@@ -61,13 +67,11 @@ Version 2017-01-11"
        (list (region-beginning) (region-end))
      (list (line-beginning-position) (line-end-position))))
   (save-excursion
-      (save-restriction
-        (narrow-to-region @begin @end)
-        (goto-char (point-min))
-        (while (search-forward "\"" nil t)
-          (replace-match "\\\"" "FIXEDCASE" "LITERAL")))))
-
-(global-set-key [?\C-c ?d] 'duplicate-line-or-region)
+    (save-restriction
+      (narrow-to-region @begin @end)
+      (goto-char (point-min))
+      (while (search-forward "\"" nil t)
+        (replace-match "\\\"" "FIXEDCASE" "LITERAL")))))
 
 (define-key global-map (kbd "RET") 'newline-and-indent)
 
