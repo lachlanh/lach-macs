@@ -6,6 +6,7 @@
 
 (load-packages markdown-packages)
 
+;; This requires 'apt installl hunspell hunspell-en-au'
 (setq ispell-program-name "hunspell")
 (setq ispell-local-dictionary "en_AU")
 
