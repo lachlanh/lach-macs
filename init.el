@@ -15,6 +15,7 @@
 (load "clang")
 ;;(load "js")
 ;;(load "java")
+(load "markdown")
 
 ;; (add-to-list 'load-path "~/.emacs.d/better-defaults")
 ;; (require 'better-defaults)
@@ -28,11 +29,16 @@
  '(ansi-color-faces-vector
    [default bold shadow italic underline bold bold-italic bold])
  '(ansi-color-names-vector
-   (vector "#eaeaea" "#d54e53" "#b9ca4a" "#e7c547" "#7aa6da" "#c397d8" "#70c0b1" "#000000"))
+   (vector "#eaeaea" "#d54e53" "#b9ca4a" "#e7c547" "#7aa6da" "#c397d8"
+           "#70c0b1" "#000000"))
  '(custom-safe-themes
-   '("5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc" "9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78" "7f1263c969f04a8e58f9441f4ba4d7fb1302243355cb9faecb55aec878a06ee9" "1157a4055504672be1df1232bed784ba575c60ab44d8e6c7b3800ae76b42f8bd" default))
+   '("5ee12d8250b0952deefc88814cf0672327d7ee70b16344372db9460e9a0e3ffc"
+     "9e54a6ac0051987b4296e9276eecc5dfb67fdcd620191ee553f40a9b6d943e78"
+     "7f1263c969f04a8e58f9441f4ba4d7fb1302243355cb9faecb55aec878a06ee9"
+     "1157a4055504672be1df1232bed784ba575c60ab44d8e6c7b3800ae76b42f8bd"
+     default))
  '(fci-rule-color "#2a2a2a")
- '(package-selected-packages '(magit ivy helm))
+ '(package-selected-packages nil)
  '(safe-local-variable-values
    '((cider-ns-refresh-after-fn . "integrant.repl/resume")
      (cider-ns-refresh-before-fn . "integrant.repl/suspend"))))
