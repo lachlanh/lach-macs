@@ -18,7 +18,8 @@
     ;; https://emacs-lsp.github.io/lsp-mode/tutorials/clojure-guide/
     lsp-mode
     lsp-treemacs
-    
+    ;; sql
+    sqlformat
     ))
 
 (load-packages programming-packages)
@@ -41,3 +42,8 @@
 
 ;; terminal copy paste
 (global-clipetty-mode)
+
+;; sql options
+(setq sqlformat-command 'sqlfluff)
+;; Optional additional args
+(setq sqlformat-args '("-e" "LT05" "--dialect" "postgres"))
